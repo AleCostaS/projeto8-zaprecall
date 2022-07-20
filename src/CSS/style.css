@@ -1,4 +1,71 @@
-.root {
-    font-size: 64px;
-    background-color: red;
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;700&family=Righteous&family=Roboto:wght@100;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;    
+
+    display: flex;
+    justify-content: center;
+}
+
+.meta {
+    height: 100vh;
+    width: 600px;
+    background-color: #FB6B6B;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.meta img {
+    width: 204px;
+    height: 242px;
+}
+
+h1 {
+    font-family: 'Righteous', cursive;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 45px;
+    margin-top: 26px;
+}
+
+.meta input {
+    color: #ADADAD;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 286px;
+    height: 56px;
+    margin-top: 48px;
+    padding-left: 20px;
+    border-radius: 7px;
+    border-color: #ADADAD;
+}
+
+.meta input :placeholder {
+    margin-left: 20px;
+}
+
+.botão {
+    margin-top: 20px;
+    width: 309px;
+    height: 66px;
+    border-radius: 7px;
+    font-family: 'Recursive', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desativado{
+    background-color: #E8E8E8;
+    color: #C0C0C0;
 }
