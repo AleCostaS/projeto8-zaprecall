@@ -84,6 +84,9 @@ h1 {
 
 .decks select {
     width: 309px;
+}
+
+.decks select > option{
     color: #ADADAD;
 }
 
