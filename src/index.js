@@ -1,17 +1,31 @@
 import ReactDOM from 'react-dom';
+import React from "react";
+import Meta from './components/Meta';
 
 import './CSS/reset.css';
 import './CSS/style.css';
-import logo from './img/logo.png' 
+
+
+
+function App() {
+    const [tela, setTela] = React.useState(0);
+
+    if (tela === 0){
+        return (
+            <>
+                <Meta button={<div className='botão desativado'>Iniciar Recall!</div>} mudarTela={() => setTela(tela+1)}/>
+            </>
+        );
+    } else {
+        return (
+            <>
+                oi
+            </>
+        );
+    }
+   
+}
 
 ReactDOM.render(
-    <>
-        <div className='meta'>
-            <img src={logo} />
-            <h1>ZapRecall</h1>
-            <input placeholder='Digite sua meta de zaps...'></input>
-            <div className='botão desativado'>Iniciar Recall!</div>
-        </div>
-    </>,
-    document.querySelector(".root")
+    <App />, document.querySelector(".root")
 );
