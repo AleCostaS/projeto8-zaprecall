@@ -83,6 +83,7 @@ h1 {
 }
 
 .decks select {
+    width: 309px;
     color: #ADADAD;
 }
 
