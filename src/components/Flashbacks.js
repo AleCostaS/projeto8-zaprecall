@@ -2,6 +2,7 @@ import logopequeno from '../img/logo-pequeno.png';
 import Pergunta from './Perguntas';
 
 export default function FlashBacks(props){
+    console.log(props.deckEscolhido)
 
     return (
         <>

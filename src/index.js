@@ -70,6 +70,10 @@ function App() {
         }
     ];
 
+    function comparador() { 
+        return Math.random() - 0.5; 
+    }
+
     if (tela === 0){
         return (
             <>
@@ -97,6 +101,14 @@ function App() {
             </>
         );
     } else if (tela === 2) {
+        const ordemAleatoria = [];
+        
+        for (let i = 0; i < decks[escolhido-1].perguntas.length; i++){
+            ordemAleatoria.push(i);
+        }
+        
+        ordemAleatoria.sort(comparador);
+
         return (
             <>
                 <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} />
