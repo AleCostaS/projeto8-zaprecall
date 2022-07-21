@@ -10,7 +10,9 @@ function App() {
     const [tela, setTela] = React.useState(0);
     const [invalido, setInvalido] = React.useState(true);
     const [escolhido, setEscolhido] = React.useState();
-
+    const [contador, setContador] = React.useState(0);
+    const [ordem, setOrdem] = React.useState([]);
+        
     const decks = [
         {
             'nome':'React',
@@ -71,7 +73,18 @@ function App() {
     ];
 
     function comparador() { 
+        console.log("aleatorizei")
         return Math.random() - 0.5; 
+    }
+
+    function mudarOrdem(){
+        let ordemAleatoria = [];
+        for (let i = 0; i < decks[escolhido-1].perguntas.length; i++){
+            ordemAleatoria.push(i);
+        }
+        
+        ordemAleatoria.sort(comparador);
+        setOrdem(ordemAleatoria)
     }
 
     if (tela === 0){
@@ -96,22 +109,14 @@ function App() {
                 {invalido ? (
                     <EscolhaDeck button={<div className='botão desativado'>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
                     ) : (
-                    <EscolhaDeck button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
+                    <EscolhaDeck button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true); mudarOrdem();}}>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
                 )}
             </>
         );
     } else if (tela === 2) {
-        const ordemAleatoria = [];
-        
-        for (let i = 0; i < decks[escolhido-1].perguntas.length; i++){
-            ordemAleatoria.push(i);
-        }
-        
-        ordemAleatoria.sort(comparador);
-
         return (
             <>
-                <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} ordem={ordemAleatoria} />
+                <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} ordem={ordem} contador={contador} incrementarContador={(e) => {console.log(e); setContador(e)}} />
             </>
         );
     }

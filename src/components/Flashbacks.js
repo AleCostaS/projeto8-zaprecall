@@ -63,7 +63,7 @@ export default function FlashBacks(props){
                                 return <Pergunta pergunta={props.deckEscolhido[props.ordem[item]].pergunta} virar={respostas} item={item}/>;
                             } else {
                                 return (
-                                    <RespostasViradas resposta={props.deckEscolhido[props.ordem[item]].resposta} />
+                                    <RespostasViradas resposta={props.deckEscolhido[props.ordem[item]].resposta} incrementarContador={props.incrementarContador} contador={props.contador} />
                                 );
                             }
                             
@@ -72,7 +72,7 @@ export default function FlashBacks(props){
                 </div>
                 
                 <div className='bottom'>
-                    0/{props.deckEscolhido.length} CONCLUÍDOS
+                    {props.contador}/{props.deckEscolhido.length} CONCLUÍDOS
                 </div>
             </div>
         </>
