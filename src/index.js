@@ -111,7 +111,7 @@ function App() {
 
         return (
             <>
-                <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} />
+                <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} ordem={ordemAleatoria} />
             </>
         );
     }
