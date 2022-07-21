@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from "react";
 import Meta from './components/Meta';
+import EscolhaDeck from './components/EscolhaDeck';
 
 import './CSS/reset.css';
 import './CSS/style.css';
@@ -19,7 +20,7 @@ function App() {
     } else {
         return (
             <>
-                oi
+                <EscolhaDeck/>
             </>
         );
     }
