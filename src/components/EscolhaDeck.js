@@ -2,8 +2,9 @@ import logo from '../img/logo.png';
 
 export default function EscolhaDeck(props){
 
-    const deckValido = () => {
+    const deckValido = (e) => {
         props.validar(false);
+        props.escolhido(e.target.value);
     };
 
     return (

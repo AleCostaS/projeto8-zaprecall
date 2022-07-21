@@ -58,7 +58,7 @@ h1 {
     color: #C0C0C0;
 }
 
-.perguntas,
+.pergunta,
 .botão {
     margin-top: 20px;
     width: 309px;
@@ -117,15 +117,20 @@ h1 {
 }
 
 .topo {
+    background-color: #FB6B6B;
+    width: 600px;
+    padding: 60px 0;
+    z-index: 1;
+    
     display: flex;
     flex-direction: row;
-    margin-bottom: 60px;
+    justify-content: center;
 
     position: fixed;
-    top: 52px;
+    top: 0;
 }
 
-.perguntas {
+.pergunta {
     background-color: #FFFFFF;
     font-family: 'Recursive', sans-serif;
     font-style: bold;
@@ -139,6 +144,14 @@ h1 {
     justify-content: space-between;
 }
 
-.perguntas ion-icon {
+.pergunta ion-icon {
     font-size: 32px;
+}
+
+.perguntas {
+    width: 600px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

@@ -9,10 +9,15 @@ import './CSS/style.css';
 function App() {
     const [tela, setTela] = React.useState(0);
     const [invalido, setInvalido] = React.useState(true);
+    const [escolhido, setEscolhido] = React.useState();
 
     const decks = [
         {
             'nome':'React',
+            'perguntas':[]
+            
+        }, {
+            'nome':'React2',
             'perguntas':[{
                 'pergunta':'O que é JSX?', 
                 'resposta':'Uma extensão de linguagem do JavaScript'
@@ -48,7 +53,7 @@ function App() {
                 {invalido ? (
                     <Meta button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}/>
                     ) : (
-                    <Meta button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  validar={(v) => setInvalido(v)} />
+                    <Meta button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  validar={(e) => setInvalido(e)} />
                 )}
             </>
         );
@@ -62,16 +67,16 @@ function App() {
         return (
             <>
                 {invalido ? (
-                    <EscolhaDeck button={<div className='botão desativado'>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)}/>
+                    <EscolhaDeck button={<div className='botão desativado'>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
                     ) : (
-                    <EscolhaDeck button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)}/>
+                    <EscolhaDeck button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
                 )}
             </>
         );
     } else if (tela === 2) {
         return (
             <>
-                <FlashBacks />
+                <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} />
             </>
         );
     }

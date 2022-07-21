@@ -1,7 +1,15 @@
 import logopequeno from '../img/logo-pequeno.png';
+import Pergunta from './Perguntas';
 
-export default function FlashBacks(){
+export default function FlashBacks(props){
 
+    console.log(props.deckEscolhido)
+    console.log(typeof(props.deckEscolhido))
+
+   /*  function view() {
+        titleRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+ */
     return (
         <>
             <div className='flashbacks'>
@@ -11,12 +19,14 @@ export default function FlashBacks(){
                 </div>
 
                 <div className='perguntas'>
-                    <p>Pergunta 1</p>
-                    <ion-icon name="play-outline"></ion-icon>
+                    {Object.keys(props.deckEscolhido).map((item) => {
+                        return <Pergunta numero={parseInt(item)+1}/>
+                    })}
+                    
                 </div>
                 
                 <div className='bottom'>
-                    CONCLUÍDOS
+                    0/{props.deckEscolhido.length} CONCLUÍDOS
                 </div>
             </div>
         </>
