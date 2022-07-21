@@ -57,13 +57,29 @@ export default function FlashBacks(props){
                 <div className='perguntas'>
                     {Object.keys(props.deckEscolhido).map((item) => {
                         if (!virado[item]){
-                            return <PerguntaVirada numero={parseInt(item)+1} virar={virar} item={item}/>;
+                            return (
+                                <PerguntaVirada 
+                                    numero={parseInt(item)+1} 
+                                    virar={virar} 
+                                    item={item}
+                                />
+                            );
                         } else {
                             if (!resposta[item]){
-                                return <Pergunta pergunta={props.deckEscolhido[props.ordem[item]].pergunta} virar={respostas} item={item}/>;
+                                return (
+                                    <Pergunta 
+                                        pergunta={props.deckEscolhido[props.ordem[item]].pergunta} 
+                                        virar={respostas} 
+                                        item={item}
+                                    />
+                                );
                             } else {
                                 return (
-                                    <RespostasViradas resposta={props.deckEscolhido[props.ordem[item]].resposta} incrementarContador={props.incrementarContador} contador={props.contador} />
+                                    <RespostasViradas 
+                                        resposta={props.deckEscolhido[props.ordem[item]].resposta} 
+                                        incrementarContador={props.incrementarContador} 
+                                        contador={props.contador} 
+                                    />
                                 );
                             }
                             

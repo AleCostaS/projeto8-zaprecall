@@ -15,7 +15,11 @@ export default function EscolhaDeck(props){
                 <select onChange={deckValido}>
                     <option value='' disabled selected hidden>Escolha seu deck</option>
                     {props.decksNames.map((nome, item) => {
-                        return <Opcoes value={item+1} name={nome}/>;
+                        return (
+                            <Opcoes 
+                                value={item+1} 
+                                name={nome}
+                            />);
                     })}
                 </select>
                 {props.button}

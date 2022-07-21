@@ -91,9 +91,14 @@ function App() {
         return (
             <>
                 {invalido ? (
-                    <Meta button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}/>
-                    ) : (
-                    <Meta button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  validar={(e) => setInvalido(e)} />
+                    <Meta 
+                        button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}
+                    />
+                ) : (
+                    <Meta 
+                        button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  
+                        validar={(e) => setInvalido(e)} 
+                    />
                 )}
             </>
         );
@@ -107,16 +112,30 @@ function App() {
         return (
             <>
                 {invalido ? (
-                    <EscolhaDeck button={<div className='botão desativado'>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
-                    ) : (
-                    <EscolhaDeck button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true); mudarOrdem();}}>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)} escolhido={(e) => setEscolhido(e)} />
+                    <EscolhaDeck 
+                        button={<div className='botão desativado'>Iniciar Recall!</div>} 
+                        decksNames={names} 
+                        validar={(v) => setInvalido(v)} 
+                        escolhido={(e) => setEscolhido(e)} 
+                    />
+                ) : (
+                    <EscolhaDeck 
+                        button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true); mudarOrdem();}}>Iniciar Recall!</div>} 
+                        decksNames={names} 
+                        validar={(v) => setInvalido(v)} 
+                        escolhido={(e) => setEscolhido(e)} 
+                    />
                 )}
             </>
         );
     } else if (tela === 2) {
         return (
             <>
-                <FlashBacks deckEscolhido={decks[escolhido-1].perguntas} ordem={ordem} contador={contador} incrementarContador={(e) => {console.log(e); setContador(e)}} />
+                <FlashBacks 
+                    deckEscolhido={decks[escolhido-1].perguntas} 
+                    ordem={ordem} contador={contador} 
+                    incrementarContador={(e) => {console.log(e); setContador(e)}} 
+                />
             </>
         );
     }
