@@ -8,6 +8,7 @@ import './CSS/style.css';
 
 function App() {
     const [tela, setTela] = React.useState(0);
+    const [invalido, setInvalido] = React.useState(true);
 
     const decks = [
         {
@@ -44,21 +45,30 @@ function App() {
     if (tela === 0){
         return (
             <>
-                <Meta button={<div className='botão desativado'>Iniciar Recall!</div>} mudarTela={() => setTela(tela+1)}/>
+                {invalido ? (
+                    <Meta button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}/>
+                    ) : (
+                    <Meta button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  validar={(v) => setInvalido(v)} />
+                )}
             </>
         );
     } else if (tela === 1){
         const names = [];
+
         for (let i =0; i < decks.length; i++){
             names.push(decks[i].nome);
         }
-        console.log(names)
+
         return (
             <>
-                <EscolhaDeck button={<div className='botão desativado'>Iniciar Recall!</div>} mudarTela={() => setTela(tela+1)} decksNames={names}/>
+                {invalido ? (
+                    <EscolhaDeck button={<div className='botão desativado'>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)}/>
+                    ) : (
+                    <EscolhaDeck button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>} decksNames={names} validar={(v) => setInvalido(v)}/>
+                )}
             </>
         );
-    }  else {
+    } else if (tela === 2) {
         return (
             <>
                 <div>Em obras</div>

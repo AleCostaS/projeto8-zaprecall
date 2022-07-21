@@ -1,12 +1,9 @@
 import logo from '../img/logo.png';
 
 export default function EscolhaDeck(props){
-    console.log(props)
 
     const deckValido = () => {
-        document.querySelector('.botão').classList.remove('desativado')
-        document.querySelector('.botão').classList.add('ativado')
-        document.querySelector('.botão').addEventListener('click', props.mudarTela);
+        props.validar(false);
     };
 
     return (

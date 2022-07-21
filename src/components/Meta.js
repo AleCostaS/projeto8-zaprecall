@@ -1,15 +1,12 @@
 import logo from '../img/logo.png';
 
 export default function Meta(props){
+    
     const metaValida = (e) => {
-        if (isNaN(e.target.value) || parseInt(e.target.value) < 1 || e.target.value === ''){
-            document.querySelector('.botão').classList.add('desativado')
-            document.querySelector('.botão').classList.remove('ativado')
-            document.querySelector('.botão').removeEventListener('click', props.mudarTela);
+        if ((isNaN(e.target.value) === false) && (parseInt(e.target.value) >= 1) && (e.target.value !== '')){
+            props.validar(false);
         } else {
-            document.querySelector('.botão').classList.remove('desativado')
-            document.querySelector('.botão').classList.add('ativado')
-            document.querySelector('.botão').addEventListener('click', props.mudarTela);
+            props.validar(true);
         }
     };
 
