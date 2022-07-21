@@ -131,6 +131,7 @@ h1 {
     top: 0;
 }
 
+.perguntaVisivel,
 .pergunta {
     background-color: #FFFFFF;
     font-family: 'Recursive', sans-serif;

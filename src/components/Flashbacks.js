@@ -1,7 +1,7 @@
 import logopequeno from '../img/logo-pequeno.png';
 import PerguntaVirada from './PerguntasViradas';
 import React from "react";
-import { type } from 'os';
+import Pergunta from './Pergunta';
 
 export default function FlashBacks(props){
     let arr1 = [];
@@ -37,7 +37,7 @@ export default function FlashBacks(props){
                         if (!virado[item]){
                             return <PerguntaVirada numero={parseInt(item)+1} virar={virar} item={item}/>;
                         } else {
-                            return <></>
+                            return <Pergunta pergunta={props.deckEscolhido[props.ordem[item]].pergunta} />
                         }
                         
                     })}
