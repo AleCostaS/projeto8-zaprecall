@@ -3,13 +3,6 @@ import Pergunta from './Perguntas';
 
 export default function FlashBacks(props){
 
-    console.log(props.deckEscolhido)
-    console.log(typeof(props.deckEscolhido))
-
-   /*  function view() {
-        titleRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
- */
     return (
         <>
             <div className='flashbacks'>

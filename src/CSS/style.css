@@ -9,6 +9,7 @@ body {
     justify-content: center;
 }
 
+.perguntas,
 .flashbacks,
 .decks,
 .meta {
@@ -150,8 +151,14 @@ h1 {
 
 .perguntas {
     width: 600px;
+    height: fit-content;
+    margin-top: 530px;
 
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.perguntas > :nth-last-child(1) {
+    margin-bottom: 130px;
 }
