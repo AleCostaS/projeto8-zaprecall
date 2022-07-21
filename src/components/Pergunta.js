@@ -4,7 +4,7 @@ export default function Pergunta(props){
     return(
         <div className='perguntaVisivel' >
             <p>{props.pergunta}</p>
-            <img src={setinha} onClick={() => console.log('aqui')} />
+            <img src={setinha} onClick={() => {props.virar(props.item)}} />
         </div>
     );
 } 

@@ -2,15 +2,17 @@ import logopequeno from '../img/logo-pequeno.png';
 import PerguntaVirada from './PerguntasViradas';
 import React from "react";
 import Pergunta from './Pergunta';
+import RespostasViradas from './RespostasViradas.js';
 
 export default function FlashBacks(props){
     let arr1 = [];
 
-    for (let i=0; i < props.ordem.length; i++){{
+    for (let i=0; i < props.ordem.length; i++){
         arr1.push(false);  
-    }}
+    }
 
     const [virado, setVirado] = React.useState(arr1);
+    const [resposta, setResposta] = React.useState(arr1);
 
     const virar = (e) => {
         let arr2 = [];
@@ -21,7 +23,27 @@ export default function FlashBacks(props){
                 arr2.push(false);  
             }
         }}
+
+        // perguntar pro monitor
+        let arr1 = [];
+        for (let i=0; i < props.ordem.length; i++){
+            arr1.push(false);  
+        }
+
         setVirado(arr2);
+        setResposta(arr1);
+    }
+
+    const respostas = (e) => {
+        let arr2 = [];
+        for (let i=0; i < props.ordem.length; i++){{
+            if (i === parseInt(e)){
+                arr2.push(true)
+            } else {
+                arr2.push(false);  
+            }
+        }}
+        setResposta(arr2);
     }
 
     return (
@@ -37,7 +59,14 @@ export default function FlashBacks(props){
                         if (!virado[item]){
                             return <PerguntaVirada numero={parseInt(item)+1} virar={virar} item={item}/>;
                         } else {
-                            return <Pergunta pergunta={props.deckEscolhido[props.ordem[item]].pergunta} />
+                            if (!resposta[item]){
+                                return <Pergunta pergunta={props.deckEscolhido[props.ordem[item]].pergunta} virar={respostas} item={item}/>;
+                            } else {
+                                return (
+                                    <RespostasViradas resposta={props.deckEscolhido[props.ordem[item]].resposta} />
+                                );
+                            }
+                            
                         }
                     })}
                 </div>

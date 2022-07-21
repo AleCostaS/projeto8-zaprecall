@@ -187,4 +187,47 @@ h1 {
 
 .perguntaVisivel p {
     margin-top: 24px;
+    font-family: 'Recursive', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.opcoes {
+    padding: 13px 0;
+    width: 92%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.vermelho,
+.amarelo,
+.verde {
+    background-color: aqua;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+    width: 30%;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vermelho {
+    background-color: #FF3030;
+}
+
+.verde {
+    background-color: #2FBE34;
+}
+
+.amarelo {
+    background-color: #FF922E;
 }
