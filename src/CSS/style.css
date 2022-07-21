@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;700&family=Righteous&family=Roboto:wght@100;400;700&display=swap');
 
 body {
+    background-color: #292929;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;    
 
@@ -8,6 +9,7 @@ body {
     justify-content: center;
 }
 
+.flashbacks,
 .decks,
 .meta {
     height: 100vh;
@@ -56,6 +58,7 @@ h1 {
     color: #C0C0C0;
 }
 
+.perguntas,
 .botão {
     margin-top: 20px;
     width: 309px;
@@ -90,3 +93,52 @@ h1 {
     color: #ADADAD;
 }
 
+.bottom {
+    font-family: 'Recursive', sans-serif;
+    background-color: #FFFFFF;
+    font-size: 20px;
+    width: 600px;
+    height: 110px;
+    z-index: 1;
+
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.topo img {
+    width: 72px;
+    height: 88px;
+    margin-right: 42px;
+}
+
+.topo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 60px;
+
+    position: fixed;
+    top: 52px;
+}
+
+.perguntas {
+    background-color: #FFFFFF;
+    font-family: 'Recursive', sans-serif;
+    font-style: bold;
+    font-weight: 700;
+    padding: 0 20px;
+    width: 80%;
+    height: 80px;
+    font-size: 18px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.perguntas ion-icon {
+    font-size: 32px;
+}
