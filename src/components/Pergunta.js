@@ -4,7 +4,7 @@ export default function Pergunta(props){
     return(
         <div className='perguntaVisivel' >
             <p>{props.pergunta}</p>
-            <img src={setinha} />
+            <img src={setinha} onClick={() => console.log('aqui')} />
         </div>
     );
 } 

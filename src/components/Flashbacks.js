@@ -39,9 +39,7 @@ export default function FlashBacks(props){
                         } else {
                             return <Pergunta pergunta={props.deckEscolhido[props.ordem[item]].pergunta} />
                         }
-                        
                     })}
-                    
                 </div>
                 
                 <div className='bottom'>

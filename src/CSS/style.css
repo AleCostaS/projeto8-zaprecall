@@ -59,6 +59,7 @@ h1 {
     color: #C0C0C0;
 }
 
+.perguntaVisivel,
 .pergunta,
 .botão {
     margin-top: 20px;
@@ -153,7 +154,6 @@ h1 {
 .perguntas {
     width: 600px;
     height: fit-content;
-    margin-top: 530px;
 
     display: flex;
     align-items: center;
@@ -162,4 +162,29 @@ h1 {
 
 .perguntas > :nth-last-child(1) {
     margin-bottom: 130px;
+}
+
+.perguntas > :nth-child(1) {
+    margin-top: 580px;
+}
+
+.perguntaVisivel {
+    background-color: #FFFFD5;
+    height: 200px;
+
+    display: block;
+    position: relative;
+}
+
+.perguntaVisivel img {
+    width: 34px;
+    height: 18px;
+
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.perguntaVisivel p {
+    margin-top: 24px;
 }
