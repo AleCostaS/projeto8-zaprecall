@@ -9,6 +9,7 @@ import './CSS/style.css';
 function App() {
     const [tela, setTela] = React.useState(0);
     const [invalido, setInvalido] = React.useState(true);
+    const [meta, setMeta] = React.useState(0);
     const [escolhido, setEscolhido] = React.useState();
     const [contador, setContador] = React.useState(0);
     const [ordem, setOrdem] = React.useState([]);
@@ -92,11 +93,12 @@ function App() {
                 {invalido ? (
                     <Meta 
                         button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}
+                        setMeta={(e) => setMeta(e)}
                     />
                 ) : (
                     <Meta 
                         button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  
-                        validar={(e) => setInvalido(e)} 
+                        validar={(e) => setInvalido(e)}
                     />
                 )}
             </>
@@ -133,7 +135,8 @@ function App() {
                 <FlashBacks 
                     deckEscolhido={decks[escolhido-1].perguntas} 
                     ordem={ordem} contador={contador} 
-                    incrementarContador={(e) => {setContador(e)}} 
+                    incrementarContador={(e) => {setContador(e)}}
+                    meta={meta}
                 />
             </>
         );

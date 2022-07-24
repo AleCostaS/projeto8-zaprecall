@@ -270,7 +270,7 @@ h1 {
 
 .titulo {
     margin-top: 12px;
-    
+
     display: flex;
     flex-direction: row;
 }
@@ -286,4 +286,20 @@ h1 {
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
     margin-bottom: 12px;
+}
+
+.reiniciar {
+    background-color: #FB6B6B;
+    color: #FFFFFF;
+    width: 240px;
+    height: 34px;
+    margin-top: 24px;
+    margin-bottom: 20px;
+    font-family: 'Recursive', sans-serif;
+    font-weight: 400;
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

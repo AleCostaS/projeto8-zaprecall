@@ -8,10 +8,11 @@ import sad from '../img/sad.png';
 import party from '../img/party.png';
 
 export default function FlashBacks(props){
-    const [ordem, deckEscolhido, contador, incrementarContador] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador];
+    const [ordem, deckEscolhido, contador, incrementarContador, meta] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador, props.meta];
     const [resultados, setResultados] = React.useState([]);
     let arr1 = [];
-    let v = false;
+    let [v, v1, v2] = [false, false, false];
+    let c = 0;
 
     for (let i=0; i < ordem.length; i++){
         arr1.push(false);  
@@ -146,31 +147,47 @@ export default function FlashBacks(props){
                 <div className='bottom'>
                     {resultados.map((item) => {
                         if (item === 2){
-                            return (
-                                <>
-                                    <div className='titulo'>
-                                        <img src={sad} /> 
-                                        <h1>Putz...</h1>
-                                        
-                                    </div>
-                                    <p>Ainda faltam alguns... Mas não desanime!</p>
-                                </>
-                                
-                            );
-                        } else if (contador === deckEscolhido.length && v === false){
-                            v = true;
-                            return (
-                                <>
-                                    <div className='titulo'>
-                                        <img src={party} /> 
-                                        <h1>Parabéns!</h1>
-                                        
-                                    </div>
-                                    <p>Você não esqueceu de nenhum flashcard!</p>
-                                </>
-                                
-                            );
+                            c++;
+                            if (c === meta){
+                                v = true;
+                            }
                         }
+                        
+                        if (c === meta){
+                            v = true;
+                        }
+                        console.log(v)
+                        if (v1 === false){
+                            if (contador === deckEscolhido.length && v === true){
+                                console.log("aqui")
+                                v1 = true;
+                                return (
+                                    <>
+                                        <div className='titulo'>
+                                            <img src={sad} /> 
+                                            <h1>Putz...</h1>
+                                            
+                                        </div>
+                                        <p>Ainda faltam alguns... Mas não desanime!</p>
+                                    </>
+                                );
+                            } else if (contador === deckEscolhido.length){
+                                console.log("aqua")
+                                v1 = true;
+                                return (
+                                    <>
+                                        <div className='titulo'>
+                                            <img src={party} /> 
+                                            <h1>Parabéns!</h1>
+                                            
+                                        </div>
+                                        <p>Você não esqueceu de nenhum flashcard!</p>
+                                    </>
+                                    
+                                );
+                            }
+                        }
+                        
                     })}
                     
                     {contador}/{deckEscolhido.length} CONCLUÍDOS
@@ -202,6 +219,17 @@ export default function FlashBacks(props){
                             }
                         })}
                     </div>
+
+                    {resultados.map(() => {
+                        if (contador === deckEscolhido.length && v2 === false){
+                            v2 = true;
+                            return (
+                                <div className='reiniciar' onClick={() => {}}>
+                                    REINICIAR RECALL
+                                </div>
+                            );
+                        }
+                    })}
                 </div>
             </div>
         </>
