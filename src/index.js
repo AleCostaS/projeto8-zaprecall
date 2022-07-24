@@ -73,7 +73,6 @@ function App() {
     ];
 
     function comparador() { 
-        console.log("aleatorizei")
         return Math.random() - 0.5; 
     }
 
@@ -134,7 +133,7 @@ function App() {
                 <FlashBacks 
                     deckEscolhido={decks[escolhido-1].perguntas} 
                     ordem={ordem} contador={contador} 
-                    incrementarContador={(e) => {console.log(e); setContador(e)}} 
+                    incrementarContador={(e) => {setContador(e)}} 
                 />
             </>
         );

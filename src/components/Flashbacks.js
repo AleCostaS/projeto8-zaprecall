@@ -14,6 +14,7 @@ export default function FlashBacks(props){
 
     const [virado, setVirado] = React.useState(arr1);
     const [resposta, setResposta] = React.useState(arr1);
+    const [respondeu, setRespondeu] = React.useState(arr1);
 
     const virar = (e) => {
         let arr2 = [];
@@ -47,6 +48,18 @@ export default function FlashBacks(props){
         setResposta(arr2);
     }
 
+    const respondidas = (e) => {
+        let arr2 = [];
+        for (let i=0; i < ordem.length; i++){{
+            if (i === parseInt(e)){
+                arr2.push(true)
+            } else {
+                arr2.push(false);  
+            }
+        }}
+        setRespondeu(arr2);
+    }
+
     return (
         <>
             <div className='flashbacks'>
@@ -57,15 +70,37 @@ export default function FlashBacks(props){
 
                 <div className='perguntas'>
                     {Object.keys(deckEscolhido).map((item) => {
-                        if (!virado[item]){
+                        if (respondeu[item] === 2){
                             return (
                                 <PerguntaVirada 
                                     numero={parseInt(item)+1} 
                                     virar={virar} 
                                     item={item}
+                                    icone='close-circle'
+                                    classe='pergunta errado'
                                 />
                             );
-                        } else {
+                        } else if (respondeu[item] === 3){
+                            return (
+                                <PerguntaVirada 
+                                    numero={parseInt(item)+1} 
+                                    virar={virar} 
+                                    item={item}
+                                    icone='help-circle'
+                                    classe='pergunta meiocerto'
+                                />
+                            );
+                        }  else if (respondeu[item] === 4){
+                            return (
+                                <PerguntaVirada 
+                                    numero={parseInt(item)+1} 
+                                    virar={virar} 
+                                    item={item}
+                                    icone='checkmark-circle'
+                                    classe='pergunta certo'
+                                />
+                            );
+                        } else if (virado[item]){
                             if (!resposta[item]){
                                 return (
                                     <Pergunta 
@@ -74,16 +109,29 @@ export default function FlashBacks(props){
                                         item={item}
                                     />
                                 );
-                            } else {
+                            } else if (!respondeu[item]){
                                 return (
                                     <RespostasViradas 
                                         resposta={deckEscolhido[ordem[item]].resposta} 
                                         incrementarContador={incrementarContador} 
-                                        contador={contador} 
+                                        contador={contador}
+                                        virar={respondidas}
+                                        item={item}
+                                        respondeu={respondeu}
+                                        setRespondeu={setRespondeu}
                                     />
                                 );
                             }
-                            
+                        } else {
+                            return (
+                                <PerguntaVirada 
+                                    numero={parseInt(item)+1} 
+                                    virar={virar} 
+                                    item={item}
+                                    icone='play-outline'
+                                    classe='pergunta'
+                                />
+                            );
                         }
                     })}
                 </div>

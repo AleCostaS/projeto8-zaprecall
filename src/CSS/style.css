@@ -231,3 +231,22 @@ h1 {
 .amarelo {
     background-color: #FF922E;
 }
+
+.errado {
+    color: #FF3030;
+    text-decoration: line-through 3px;
+}
+
+.meiocerto {
+    color: #FF922E;
+    text-decoration: line-through 3px;
+}
+
+.certo {
+    color: #2FBE34;
+    text-decoration: line-through 3px;
+}
+
+.meiocerto ion-icon {
+    font-size: 36px;
+}

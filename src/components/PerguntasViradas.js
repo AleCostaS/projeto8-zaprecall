@@ -1,10 +1,10 @@
 export default function PerguntaVirada(props){
-    const [numero, virar, item] = [props.numero, props.virar, props.item];
+    const [numero, virar, item, classe, icone] = [props.numero, props.virar, props.item, props.classe, props.icone];
 
     return (
-        <div className='pergunta' onClick={() => {virar(item)}}>
+        <div className={classe} onClick={() => {virar(item)}}>
             <p>Pergunta {numero}</p>
-            <ion-icon name="play-outline"></ion-icon>
+            <ion-icon name={icone}></ion-icon>
         </div>
     );
 }
