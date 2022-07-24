@@ -1,10 +1,11 @@
 import logo from '../img/logo.png';
 
 export default function EscolhaDeck(props){
+    const [validar, escolhido, deck, button] = [props.validar, props.escolhido, props.decksNames, props.button];
 
     const deckValido = (e) => {
-        props.validar(false);
-        props.escolhido(e.target.value);
+        validar(false);
+        escolhido(e.target.value);
     };
 
     return (
@@ -14,7 +15,7 @@ export default function EscolhaDeck(props){
                 <h1>ZapRecall</h1>
                 <select onChange={deckValido}>
                     <option value='' disabled selected hidden>Escolha seu deck</option>
-                    {props.decksNames.map((nome, item) => {
+                    {deck.map((nome, item) => {
                         return (
                             <Opcoes 
                                 value={item+1} 
@@ -22,14 +23,16 @@ export default function EscolhaDeck(props){
                             />);
                     })}
                 </select>
-                {props.button}
+                {button}
             </div>
         </>
     );
 }
 
 function Opcoes(props){
+    const [value, name] = [props.value, props.name];
+
     return (
-        <option value={props.value}>{props.name}</option>
+        <option value={value}>{name}</option>
     );
 }

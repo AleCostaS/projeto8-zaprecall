@@ -5,9 +5,10 @@ import Pergunta from './Pergunta';
 import RespostasViradas from './RespostasViradas.js';
 
 export default function FlashBacks(props){
+    const [ordem, deckEscolhido, contador, incrementarContador] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador];
     let arr1 = [];
 
-    for (let i=0; i < props.ordem.length; i++){
+    for (let i=0; i < ordem.length; i++){
         arr1.push(false);  
     }
 
@@ -16,7 +17,7 @@ export default function FlashBacks(props){
 
     const virar = (e) => {
         let arr2 = [];
-        for (let i=0; i < props.ordem.length; i++){{
+        for (let i=0; i < ordem.length; i++){{
             if (i === parseInt(e)){
                 arr2.push(true)
             } else {
@@ -26,7 +27,7 @@ export default function FlashBacks(props){
 
         // perguntar pro monitor
         let arr1 = [];
-        for (let i=0; i < props.ordem.length; i++){
+        for (let i=0; i < ordem.length; i++){
             arr1.push(false);  
         }
 
@@ -36,7 +37,7 @@ export default function FlashBacks(props){
 
     const respostas = (e) => {
         let arr2 = [];
-        for (let i=0; i < props.ordem.length; i++){{
+        for (let i=0; i < ordem.length; i++){{
             if (i === parseInt(e)){
                 arr2.push(true)
             } else {
@@ -55,7 +56,7 @@ export default function FlashBacks(props){
                 </div>
 
                 <div className='perguntas'>
-                    {Object.keys(props.deckEscolhido).map((item) => {
+                    {Object.keys(deckEscolhido).map((item) => {
                         if (!virado[item]){
                             return (
                                 <PerguntaVirada 
@@ -68,7 +69,7 @@ export default function FlashBacks(props){
                             if (!resposta[item]){
                                 return (
                                     <Pergunta 
-                                        pergunta={props.deckEscolhido[props.ordem[item]].pergunta} 
+                                        pergunta={deckEscolhido[ordem[item]].pergunta} 
                                         virar={respostas} 
                                         item={item}
                                     />
@@ -76,9 +77,9 @@ export default function FlashBacks(props){
                             } else {
                                 return (
                                     <RespostasViradas 
-                                        resposta={props.deckEscolhido[props.ordem[item]].resposta} 
-                                        incrementarContador={props.incrementarContador} 
-                                        contador={props.contador} 
+                                        resposta={deckEscolhido[ordem[item]].resposta} 
+                                        incrementarContador={incrementarContador} 
+                                        contador={contador} 
                                     />
                                 );
                             }
@@ -88,7 +89,7 @@ export default function FlashBacks(props){
                 </div>
                 
                 <div className='bottom'>
-                    {props.contador}/{props.deckEscolhido.length} CONCLUÍDOS
+                    {contador}/{deckEscolhido.length} CONCLUÍDOS
                 </div>
             </div>
         </>
