@@ -100,7 +100,8 @@ h1 {
     background-color: #FFFFFF;
     font-size: 20px;
     width: 600px;
-    height: 110px;
+    max-height: fit-content;
+    min-height: 110px;
     z-index: 1;
 
     position: fixed;
@@ -259,4 +260,30 @@ h1 {
 .resultados {
     display: flex;
     flex-direction: row;
+}
+
+.titulo h1 {
+    color: #333333;
+    font-size: 22px;
+    margin: 0;
+}
+
+.titulo {
+    margin-top: 12px;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.titulo img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    margin-top: 8px;
+}
+
+.bottom p {
+    font-family: 'Recursive', sans-serif;
+    font-size: 18px;
+    margin-bottom: 12px;
 }

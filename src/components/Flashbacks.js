@@ -4,11 +4,14 @@ import React from "react";
 import Pergunta from './Pergunta';
 import RespostasViradas from './RespostasViradas.js';
 import MostrarResultados from './MostrarResultado';
+import sad from '../img/sad.png';
+import party from '../img/party.png';
 
 export default function FlashBacks(props){
     const [ordem, deckEscolhido, contador, incrementarContador] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador];
     const [resultados, setResultados] = React.useState([]);
     let arr1 = [];
+    let v = false;
 
     for (let i=0; i < ordem.length; i++){
         arr1.push(false);  
@@ -141,7 +144,37 @@ export default function FlashBacks(props){
                 </div>
                 
                 <div className='bottom'>
+                    {resultados.map((item) => {
+                        if (item === 2){
+                            return (
+                                <>
+                                    <div className='titulo'>
+                                        <img src={sad} /> 
+                                        <h1>Putz...</h1>
+                                        
+                                    </div>
+                                    <p>Ainda faltam alguns... Mas não desanime!</p>
+                                </>
+                                
+                            );
+                        } else if (contador === deckEscolhido.length && v === false){
+                            v = true;
+                            return (
+                                <>
+                                    <div className='titulo'>
+                                        <img src={party} /> 
+                                        <h1>Parabéns!</h1>
+                                        
+                                    </div>
+                                    <p>Você não esqueceu de nenhum flashcard!</p>
+                                </>
+                                
+                            );
+                        }
+                    })}
+                    
                     {contador}/{deckEscolhido.length} CONCLUÍDOS
+
                     <div className='resultados'>
                         {resultados.map((item) => {
                             if (item === 2){
