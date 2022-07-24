@@ -3,9 +3,11 @@ import PerguntaVirada from './PerguntasViradas';
 import React from "react";
 import Pergunta from './Pergunta';
 import RespostasViradas from './RespostasViradas.js';
+import MostrarResultados from './MostrarResultado';
 
 export default function FlashBacks(props){
     const [ordem, deckEscolhido, contador, incrementarContador] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador];
+    const [resultados, setResultados] = React.useState([]);
     let arr1 = [];
 
     for (let i=0; i < ordem.length; i++){
@@ -119,6 +121,8 @@ export default function FlashBacks(props){
                                         item={item}
                                         respondeu={respondeu}
                                         setRespondeu={setRespondeu}
+                                        resultados={resultados}
+                                        setResultados={setResultados}
                                     />
                                 );
                             }
@@ -138,6 +142,33 @@ export default function FlashBacks(props){
                 
                 <div className='bottom'>
                     {contador}/{deckEscolhido.length} CONCLUÍDOS
+                    <div className='resultados'>
+                        {resultados.map((item) => {
+                            if (item === 2){
+                                return(
+                                    <MostrarResultados 
+                                        classe='errado'
+                                        icone='close-circle'
+                                    />
+                                );
+                            
+                            } else if (item === 3){
+                                return (
+                                    <MostrarResultados 
+                                        classe='meiocerto'
+                                        icone='help-circle'
+                                    />
+                                );
+                            } else if (item === 4){
+                                return(
+                                    <MostrarResultados 
+                                        classe='certo'
+                                        icone='checkmark-circle'
+                                    />
+                                );
+                            }
+                        })}
+                    </div>
                 </div>
             </div>
         </>
