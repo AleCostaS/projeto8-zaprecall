@@ -8,7 +8,7 @@ import sad from '../img/sad.png';
 import party from '../img/party.png';
 
 export default function FlashBacks(props){
-    const [ordem, deckEscolhido, contador, incrementarContador, meta] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador, props.meta];
+    const [ordem, deckEscolhido, contador, incrementarContador, meta, mudarTela] = [props.ordem, props.deckEscolhido, props.contador, props.incrementarContador, props.meta, props.mudarTela];
     const [resultados, setResultados] = React.useState([]);
     let arr1 = [];
     let [v, v1, v2] = [false, false, false];
@@ -55,7 +55,6 @@ export default function FlashBacks(props){
                 </div>
 
                 <div className='perguntas'>
-                    <div className='espaco'></div>
 
                     {/* Para cada pergunta dentro do deck escolhido eu faço:  */}
                     {Object.keys(deckEscolhido).map((item) => {
@@ -149,11 +148,11 @@ export default function FlashBacks(props){
                         if (c === meta){
                             v = true;
                         }
-                        console.log(v)
+
                         if (v1 === false){
                             if (contador === deckEscolhido.length && v === true){
-                                console.log("aqui")
                                 v1 = true;
+                                
                                 return (
                                     <>
                                         <div className='titulo'>
@@ -165,8 +164,8 @@ export default function FlashBacks(props){
                                     </>
                                 );
                             } else if (contador === deckEscolhido.length){
-                                console.log("aqua")
                                 v1 = true;
+                                
                                 return (
                                     <>
                                         <div className='titulo'>
@@ -194,7 +193,6 @@ export default function FlashBacks(props){
                                         icone='close-circle'
                                     />
                                 );
-                            
                             } else if (item === 3){
                                 return (
                                     <MostrarResultados 
@@ -216,8 +214,9 @@ export default function FlashBacks(props){
                     {resultados.map(() => {
                         if (contador === deckEscolhido.length && v2 === false){
                             v2 = true;
+                            
                             return (
-                                <div className='reiniciar' onClick={() => {}}>
+                                <div className='reiniciar' onClick={() => {mudarTela(0); incrementarContador(0)}}>
                                     REINICIAR RECALL
                                 </div>
                             );

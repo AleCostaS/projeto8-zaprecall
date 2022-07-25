@@ -69,7 +69,6 @@ h1 {
     font-family: 'Recursive', sans-serif;
     font-weight: 400;
     font-size: 24px;
-    cursor: pointer;
 
     display: flex;
     justify-content: center;
@@ -85,6 +84,7 @@ h1 {
     background-color: #FFFFFF;
     color: #D70900;
     border: 5px #D70900;
+    cursor: pointer;
 }
 
 .decks select {
@@ -301,6 +301,7 @@ h1 {
     font-family: 'Recursive', sans-serif;
     font-weight: 400;
     border-radius: 7px;
+    cursor: pointer;
 
     display: flex;
     align-items: center;
