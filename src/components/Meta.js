@@ -1,10 +1,10 @@
 import logo from '../img/logo.png';
 
 export default function Meta(props){
-    const [validar, button, setMeta] = [props.validar, props.button, props.setMeta];
+    const [validar, button, setMeta, max] = [props.validar, props.button, props.setMeta, props.max];
 
     const metaValida = (e) => {
-        if ((isNaN(e.target.value) === false) && (parseInt(e.target.value) >= 1) && (e.target.value !== '')){
+        if ((isNaN(e.target.value) === false) && (parseInt(e.target.value) >= 1) && (e.target.value !== '') && (parseInt(e.target.value) <= max)){
             validar(false);
             setMeta(parseInt(e.target.value));
         } else {

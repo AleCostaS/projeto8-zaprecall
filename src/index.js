@@ -88,22 +88,6 @@ function App() {
     }
 
     if (tela === 0){
-        return (
-            <>
-                {invalido ? (
-                    <Meta 
-                        button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}
-                        setMeta={(e) => setMeta(e)}
-                    />
-                ) : (
-                    <Meta 
-                        button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  
-                        validar={(e) => setInvalido(e)}
-                    />
-                )}
-            </>
-        );
-    } else if (tela === 1){
         const names = [];
 
         for (let i =0; i < decks.length; i++){
@@ -125,6 +109,25 @@ function App() {
                         decksNames={names} 
                         validar={(v) => setInvalido(v)} 
                         escolhido={(e) => setEscolhido(e)} 
+                    />
+                )}
+            </>
+        );
+    } else if (tela === 1){
+        
+        return (
+            <>
+                {invalido ? (
+                    <Meta 
+                        button={<div className='botão desativado'>Iniciar Recall!</div>} validar={(v) => setInvalido(v)}
+                        setMeta={(e) => setMeta(e)}
+                        max={decks[escolhido-1].perguntas.length}
+                    />
+                ) : (
+                    <Meta 
+                        button={<div className='botão ativado' onClick={() => {setTela(tela+1); setInvalido(true);}}>Iniciar Recall!</div>}  
+                        validar={(e) => setInvalido(e)}
+                        max={decks[escolhido-1].perguntas.length}
                     />
                 )}
             </>
