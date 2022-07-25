@@ -1,5 +1,5 @@
 export default function RespostasViradas (props){
-    const [resposta, contador, incrementarContador, item, respondidas, respondeu, setRespondeu, resultados, setResultados] = [props.resposta, props.contador, props.incrementarContador, props.item, props.virar, props.respondeu, props.setRespondeu, props.resultados, props.setResultados];
+    const [resposta, contador, incrementarContador, item, respondidas, respondeu, setRespondeu, resultados, setResultados, voltar1, voltar2] = [props.resposta, props.contador, props.incrementarContador, props.item, props.virar, props.respondeu, props.setRespondeu, props.resultados, props.setResultados, props.voltar1, props.voltar2];
     
     const respondendo = (e) => {
         let arr = respondeu;
@@ -8,7 +8,7 @@ export default function RespostasViradas (props){
     }
 
     return(
-        <div className='perguntaVisivel' >
+        <div className='perguntaVisivel' onClick={() => {voltar1(item); voltar2(item)}}>
             <p>{resposta}</p>
 
             <div className='opcoes'>

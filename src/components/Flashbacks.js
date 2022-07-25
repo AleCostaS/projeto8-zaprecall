@@ -23,35 +23,15 @@ export default function FlashBacks(props){
     const [respondeu, setRespondeu] = React.useState(arr1);
 
     const virar = (e) => {
-        let arr2 = [];
-        for (let i=0; i < ordem.length; i++){{
-            if (i === parseInt(e)){
-                arr2.push(true)
-            } else {
-                arr2.push(false);  
-            }
-        }}
-
-        // perguntar pro monitor
-        let arr1 = [];
-        for (let i=0; i < ordem.length; i++){
-            arr1.push(false);  
-        }
-
-        setVirado(arr2);
-        setResposta(arr1);
+        let arr = [...virado];
+        arr[parseInt(e)] = !arr[parseInt(e)];
+        setVirado(arr);
     }
 
     const respostas = (e) => {
-        let arr2 = [];
-        for (let i=0; i < ordem.length; i++){{
-            if (i === parseInt(e)){
-                arr2.push(true)
-            } else {
-                arr2.push(false);  
-            }
-        }}
-        setResposta(arr2);
+        let arr = [...resposta];
+        arr[parseInt(e)] = !arr[parseInt(e)];
+        setResposta(arr);
     }
 
     const respondidas = (e) => {
@@ -75,7 +55,12 @@ export default function FlashBacks(props){
                 </div>
 
                 <div className='perguntas'>
+                    <div className='espaco'></div>
+
+                    {/* Para cada pergunta dentro do deck escolhido eu faço:  */}
                     {Object.keys(deckEscolhido).map((item) => {
+
+                        /* Primeiro caso a pergunta tiver sido respondida eu coloca a pergunta de acordo com a resposta dada */
                         if (respondeu[item] === 2){
                             return (
                                 <PerguntaVirada 
@@ -106,16 +91,22 @@ export default function FlashBacks(props){
                                     classe='pergunta certo'
                                 />
                             );
-                        } else if (virado[item]){
+                        } 
+
+                        /* Caso contrario eu verifico se a pergunta esta virada ou não */
+                        if (virado[item]){
                             if (!resposta[item]){
                                 return (
                                     <Pergunta 
                                         pergunta={deckEscolhido[ordem[item]].pergunta} 
                                         virar={respostas} 
                                         item={item}
+                                        voltar={virar}
                                     />
                                 );
-                            } else if (!respondeu[item]){
+                            } 
+                            
+                            if (!respondeu[item]){
                                 return (
                                     <RespostasViradas 
                                         resposta={deckEscolhido[ordem[item]].resposta} 
@@ -127,6 +118,8 @@ export default function FlashBacks(props){
                                         setRespondeu={setRespondeu}
                                         resultados={resultados}
                                         setResultados={setResultados}
+                                        voltar1={virar}
+                                        voltar2={respostas}
                                     />
                                 );
                             }

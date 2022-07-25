@@ -152,6 +152,10 @@ h1 {
     font-size: 32px;
 }
 
+.root {
+    position: relative;
+}
+
 .perguntas {
     width: 600px;
     height: fit-content;
@@ -159,14 +163,13 @@ h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
+    
+    position: absolute;
+    top: 200px;
 }
 
 .perguntas > :nth-last-child(1) {
     margin-bottom: 130px;
-}
-
-.perguntas > :nth-child(1) {
-    margin-top: 580px;
 }
 
 .perguntaVisivel {
